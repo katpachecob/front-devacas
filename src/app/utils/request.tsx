@@ -21,7 +21,8 @@ const request: IRequestProps = async (endpoint, options, module, params) => {
     const config = {
       ...options,
       headers: headers,
-      agent: newAgent
+      agent: newAgent,
+      origin: "*"
     };
 
     const res = await fetch(url, config);
