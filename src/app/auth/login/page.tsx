@@ -72,7 +72,7 @@ const Login = () => {
           <a className='text-primary-800 text-sm' href={'/auth/signup'}> Aun no estás registrado? Registrate</a>
           {
             error
-            && error.map(err => <p className='text-red-500 text-sm text-right'>{err}</p>)}
+            && error.map((err,i) => <p  key={i} className='text-red-500 text-sm text-right'>{err}</p>)}
           <div className="my-6 w-full flex justify-center">
             <PrimaryButton title='Iniciar sesión' type={'submit'} name='sesion' />
           </div>

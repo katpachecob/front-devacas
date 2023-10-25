@@ -3,7 +3,8 @@ import { redirect } from "next/navigation";
 
 export default function protectedPage() {
 
-  const accessToken = localStorage.getItem("devacas-token")
+  const accessToken = typeof window !== 'undefined' ? localStorage?.getItem("devacas-token") || '' : '';
+
 
   if (!accessToken) {
     return redirect("/auth/login");
