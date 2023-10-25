@@ -1,23 +1,27 @@
 import moment from 'moment';
-import {  IRequestProps, THeader } from '../types/requestType';
-
+import { IRequestProps, THeader } from '../types/requestType';
+import { Agent } from 'https'
 
 const request: IRequestProps = async (endpoint, options, module, params) => {
 
   try {
-    const base_url:string|undefined = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const newAgent = new Agent({
+      rejectUnauthorized: false
+    })
+    const base_url: string | undefined = process.env.NEXT_PUBLIC_API_BASE_URL;
     const token = localStorage.getItem('devacas-token');
     const url =
       `${base_url}/api/v1/${module}/` + endpoint + (params || '');
     let headers: THeader = {
       'Content-Type': 'application/json'
     };
- 
+
 
 
     const config = {
       ...options,
-      headers: headers
+      headers: headers,
+      agent: newAgent
     };
 
     const res = await fetch(url, config);
