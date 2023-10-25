@@ -23,7 +23,8 @@ const Login = () => {
     email: '',
     password: ''
   })
-  const [error, setError] = useState([])
+  const [error, setError] = useState<string[]>([])
+
   const handleChange = ({ target: { value, name } }: THandleForm) => {
     setDataForm((previousValue: ILoginType) => {
       const newValue = { ...previousValue }
@@ -46,8 +47,14 @@ const Login = () => {
       }
     }
     catch (error: any) {
-      console.log(error.error)
-      setError(error.error || error.error)
+
+      if (error.error) {
+        //validation errors
+        setError(error.error || error)
+      }
+      else if(error.message) {
+        setError(['Hubo un error con tu cuenta'])
+      }
 
     }
   }
@@ -65,7 +72,7 @@ const Login = () => {
           <a className='text-primary-800 text-sm' href={'/auth/signup'}> Aun no estás registrado? Registrate</a>
           {
             error
-             && error.map(err => <p className='text-red-500 text-sm text-right'>{err}</p>)}
+            && error.map(err => <p className='text-red-500 text-sm text-right'>{err}</p>)}
           <div className="my-6 w-full flex justify-center">
             <PrimaryButton title='Iniciar sesión' type={'submit'} name='sesion' />
           </div>

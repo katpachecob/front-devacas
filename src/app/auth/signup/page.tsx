@@ -17,7 +17,7 @@ const SignUp = () => {
     password: '',
     fullname: '',
   })
-  const [error, setError] = useState([])
+  const [error, setError] = useState<string[]>([])
 
   const handleChange = ({ target: { value, name } }: THandleForm) => {
     setDataForm((previousValue) => {
@@ -37,8 +37,14 @@ const SignUp = () => {
       }
     }
     catch (error:any) {
+    if (error.error) {
+        //validation errors
+        setError(error.error || error)
+      }
+      else if(error.message) {
+        setError(['Hubo un al registrar tu cuenta'])
+      }
 
-      setError(error.errors || error.error)
     }
   }
 
