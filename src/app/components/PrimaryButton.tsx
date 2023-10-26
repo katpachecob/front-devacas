@@ -11,9 +11,9 @@ const PrimaryButton = ({ name, title, onClick, type }: ButtonProps) => {
     const [loading, setLoading] = useState(false)
 
     const handleOnClick = async () => {
-        setLoading(!loading)
+        setLoading(true)
         await onClick
-        setLoading((prev) => !prev);
+        setLoading((prev) => false);
     }
 
     return (

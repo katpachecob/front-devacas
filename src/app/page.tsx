@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import FirstSection from './components/FirstSection'
 
 import MainLayout from './components/layout/MainLayout'
