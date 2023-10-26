@@ -21,6 +21,7 @@ const CheckList = () => {
 
     })
     const [changes, setChanges] = useState(false)
+    const [loadingData, setLoadingData] = useState(true)
     const [smartForm, setSmartForm] = useState<SmartForm>({
         country: '',
         date: '',
@@ -30,9 +31,10 @@ const CheckList = () => {
     const [tasks, setTasks] = useState<CardType[]>([])
     useEffect(() => {
         (async () => {
-            let data = await getTasks()
 
+            let data = await getTasks()
             setTasks(data)
+            setLoadingData(false)
         }
         )()
     }, [changes])
@@ -85,13 +87,13 @@ const CheckList = () => {
             return newValue
         })
     }
-if(!tasks.length){
-    return(
-        <div className='min-h-screen flex justify-center items-center'>
-<Spinner color="#00a3d7"/>
-        </div>
-    )
-}
+    if (loadingData) {
+        return (
+            <div className='min-h-screen flex justify-center items-center'>
+                <Spinner color="#00a3d7" />
+            </div>
+        )
+    }
 
 
     return (
