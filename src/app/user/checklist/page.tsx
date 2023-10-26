@@ -11,6 +11,7 @@ import { CreateNewTaskType, SmartForm } from '@/app/types/createTaskType'
 import { THandleForm } from '@/app/types/handleForm'
 import { PencilSquareIcon, SparklesIcon, } from '@heroicons/react/24/outline'
 import protectedPage from '@/app/utils/middleware'
+import { Spinner } from 'react-activity'
 
 const CheckList = () => {
     protectedPage()
@@ -84,7 +85,13 @@ const CheckList = () => {
             return newValue
         })
     }
-
+if(!tasks.length){
+    return(
+        <div className='min-h-screen flex justify-center items-center'>
+<Spinner color="#00a3d7"/>
+        </div>
+    )
+}
 
 
     return (
