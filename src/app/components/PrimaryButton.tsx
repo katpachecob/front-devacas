@@ -13,7 +13,7 @@ const PrimaryButton = ({ name, title, onClick, type }: ButtonProps) => {
     const handleOnClick = async () => {
         setLoading(true)
         await onClick
-        setLoading((prev) => false);
+        setLoading(false);
     }
 
     return (
