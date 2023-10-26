@@ -63,13 +63,13 @@ const Login = () => {
 
   return (
     <div className='min-h-screen flex flex-col justify-center items-center'>
-      <Image alt='logo' src={'/images/devacas.png'} width={180} height={10} className='absolute bottom-0 left-0  ' />
+      <Image alt='logo' src={'/images/devacas.png'} width={180} height={10} className='absolute bottom-0 left-0 w-1/5 lg:w-[180px]  ' />
       <div className="flex flex-col justify-center items-center  px-10  lg:px-24 lg:w-2/3 mx-auto">
         <TitleCustom title="Iniciar sesión" />
         <form onSubmit={handleLogin}>
           <InputCustom name="email" placeholder='Email' value={dataForm.email} onChange={handleChange} />
           <InputCustom name="password" placeholder='Password' type='password' value={dataForm.password} onChange={handleChange} />
-          <a className='text-primary-800 text-sm' href={'/auth/signup'}> Aun no estás registrado? Registrate</a>
+          <a className='text-primary-800 text-xs lg:text-sm' href={'/auth/signup'}> Aun no estás registrado? Registrate</a>
           {
             error
             && error.map((err,i) => <p  key={i} className='text-red-500 text-sm text-right'>{err}</p>)}
@@ -79,8 +79,8 @@ const Login = () => {
         </form>
       </div>
 
-      <Image src='/images/traveling.svg' alt="TravelingImage" width={400} height={250} className={'absolute hidden lg:block bottom-0 right-0 left-0 lg:left-auto mx-auto w-1/2 lg:w-1/4'} />
-      <p className='text-primary-900 font-extralight absolute bottom-5 right-0 left-0 text-center'>© Copyright - DeVacas 2023</p>
+      <Image src='/images/traveling.svg' alt="TravelingImage" width={400} height={250} className={'absolute hidden lg:block bottom-0 right-0 left-0 lg:left-auto mx-auto md:w-1/2 lg:w-1/4'} />
+      <p className='text-primary-900 font-extralight absolute bottom-5 right-0 left-0 text-center text-sm md:text-md'>© Copyright - DeVacas 2023</p>
     </div>
   )
 }
