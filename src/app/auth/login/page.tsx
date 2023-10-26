@@ -78,6 +78,7 @@ const Login = () => {
           </div>
         </form>
       </div>
+
       <Image src='/images/traveling.svg' alt="TravelingImage" width={400} height={250} className={'absolute hidden lg:block bottom-0 right-0 left-0 lg:left-auto mx-auto w-1/2 lg:w-1/4'} />
       <p className='text-primary-900 font-extralight absolute bottom-5 right-0 left-0 text-center'>© Copyright - DeVacas 2023</p>
     </div>
